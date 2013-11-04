@@ -14,7 +14,7 @@ exports.get = function(req, res){
             ),
             "<p>Enter a number to see it's factorial. </p>",
             '<form action="/factorial" method="get" name="factorial">',
-            'A: <input type="text" name="factorial" />',
+            'A: <input type="text" name="a" />',
             '</form>'
             ].join('\n'))
         )
