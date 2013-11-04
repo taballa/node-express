@@ -9,11 +9,11 @@ exports.loadParams = function(req, res, next){
 
 exports.navbar = function(){
     return ["<div class='navbar'>",
-        "<p><a href="/">Home</a></p>",
-        "<p><a href="/mult">Multipliction</a></p>",
-        "<p><a href="/square">Square</a></p>",
-        "<p><a href="/factorial">Factorial</a></p>",
-        "<p><a href="/fibonacci">Fibonacci</a></p>",
+        "<p><a href='/'>Home</a></p>",
+        "<p><a href='/mult'>Multipliction</a></p>",
+        "<p><a href='/square'>Square</a></p>",
+        "<p><a href='/factorial'>Factorial</a></p>",
+        "<p><a href='/fibonacci'>Fibonacci</a></p>",
         "</div>"].join('\n');
 }
 
