@@ -1,4 +1,4 @@
-var factorial = exports.factorial = funciton(n){
+var factorial = exports.factorial = function(n){
     if (n===0) return 1;
     else return n*factorial(n-1);
 }
