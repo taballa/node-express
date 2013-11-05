@@ -12,7 +12,8 @@ var server = http.createServer(function(req, res){
     } else if (req.requrl.pathname === '/factorial'){
         require('./factorial-node').get(req, res);
     } else if (req.requrl.pathname === '/fibonacci'){
-        // require('./fibo-node').get(req, res);
+        require('./fibo-node').get(req, res);
+    } else if (req.requrl.pathname === '/fibo2'){
         require('./fibo2-node').get(req, res);
     } else if (req.requrl.pathname === '/mult'){
         require('./mult-node').get(req, res);
