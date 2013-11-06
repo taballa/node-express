@@ -1,6 +1,7 @@
 var htutil = require("./htutil")
 var math = require('./math')
 
+// NOTE:返回HTML渲染结果
 function sendResult(req, res, a, fiboval){
     res.writeHead(200, {
         'Content-Type':'text/html'
