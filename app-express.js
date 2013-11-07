@@ -4,10 +4,16 @@ var express = require('express')
 var app = express(
         express.logger()
     )
+var swig = require('swig')
 
-app.engine('html', require('ejs').renderFile)
-app.set('views', __dirname + '/views')
-app.set('view engine', 'ejs')
+// app.engine('html', require('ejs').renderFile)
+app.engine('html', swig.renderFile) //for swig
+// app.set('view engine', 'ejs')
+app.set('view engine', 'html') //for swig
+// Disable cacheing.
+app.set('view cache', false) //for swig and expressjs
+swig.setDefaults({ cache: false })
+app.set('views', __dirname + '/views') //for template
 
 app.configure(function(){
     app.use(app.router);
@@ -18,7 +24,8 @@ app.configure(function(){
 })
 
 app.get('/', function(req, res){
-    res.render('home.html', {title: 'Math Wizard'})
+    // res.render('home.html', {title: 'Math Wizard'}) //for ejs
+    res.render('home', {title: 'Math Wizard'}) // for swig
 })
 app.get('/mult', htutil.loadParams, function(req, res){
     if (req.a && req.b) req.result = req.a * req.b
