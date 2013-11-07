@@ -2,10 +2,13 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title><%= title %></title>
+    {# <title><%= title %></title> #}
+    <title>{% block title %}{{title}}{% endblock %}</title>
+    {% block style %}{% endblock %}
 </head>
 <body>
-    <h1><%= title %></h1>
+    {# <h1><%= title %></h1> #}
+    <h1>{{title}}</h1>
     <table>
         <tr>
             <td>
@@ -17,7 +20,8 @@
                     <p><a href="/fibonacci">Fibonacci</a></p>
                 </div>
             </td>
-            <td><%= body %></td>
+            {# <td><%= body %></td> #}
+            <td>{% block content %}content{% endblock %}</td>
         </tr>
     </table>
 </body>
