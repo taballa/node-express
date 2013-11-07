@@ -8,6 +8,7 @@ var app = express(
 app.engine('html', require('ejs').renderFile)
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
+app.set('view option', {layout: true})
 
 app.configure(function(){
     app.use(app.router);
