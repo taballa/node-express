@@ -25,7 +25,7 @@ app.configure(function(){
 
 app.get('/', function(req, res){
     // res.render('home.html', {title: 'Math Wizard'}) //for ejs
-    res.render('home', {title: 'Math Wizard'}) // for swig
+    res.render('home', {title: 'Math Wizard', birthday: new Date()}) // for swig
 })
 app.get('/mult', htutil.loadParams, function(req, res){
     if (req.a && req.b) req.result = req.a * req.b

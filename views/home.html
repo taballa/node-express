@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 {% block title %}home page title{% endblock %}
 {% block content %}
-    <p>Math Wizard</p>
+    <p>{{title}}</p>
+    <p>{{"title"|title}}</p>
+    {# <p>{{birthday|date('F js, Y')}}</p> #}
+    <p>{{birthday|date('Y-m-d')}}</p>
+    <p>{{Date()|date('Y-m-d')}}</p>
 {% endblock %}
