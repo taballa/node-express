@@ -5,5 +5,18 @@
     <p>{{"title"|title}}</p>
     {# <p>{{birthday|date('F js, Y')}}</p> #}
     <p>{{birthday|date('Y-m-d')}}</p>
-    <p>{{Date()|date('Y-m-d')}}</p>
+    <p>{{"Label:" + label}}</p>
+    <p>{{"Label:" + label|escape}}</p>
+    <p>{{"Label:" + myLabel|escape}}</p>
+    {# FIX:这种写法会抛出错误 #}
+    {# p>{{"Label:" + label()|escape}}</p> #}
+    <p>{% if foo%}
+        bar
+    {% endif %}</p>
+    <p>{% for person in peple %}
+        {% if loop.first%}<ol>{% endif %}
+        <li>{{person.name}}</li>
+        {% if loop.last%}</ol>{% endif %}
+    {% endfor %}</p>
+    <p>{{% block tacos %}{% endblock %}</p>
 {% endblock %}
