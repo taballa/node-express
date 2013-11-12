@@ -13,10 +13,10 @@
     <p>{% if foo%}
         bar
     {% endif %}</p>
-    <p>{% for person in peple %}
+    <p>{% for person in people %}
         {% if loop.first%}<ol>{% endif %}
         <li>{{person.name}}</li>
         {% if loop.last%}</ol>{% endif %}
     {% endfor %}</p>
-    <p>{{% block tacos %}{% endblock %}</p>
+    <p>{% block tacos %}{% endblock %}</p>
 {% endblock %}
