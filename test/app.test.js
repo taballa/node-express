@@ -23,4 +23,19 @@ describe('urlrar app', function(){
             done();
         })
     })
+
+    it('GET /api should have an api', function(done){
+        request(app)
+        .get('/api')
+        .expect(200)
+        .expect('X-Power-by', 'Nodejs', done)
+    })
+
+    it('GET /other should not found the page', function(done){
+        request(app)
+        .get('/noexists')
+        .expect(404)
+        .expect('Page Not Found!', done)
+    })
+
 })
