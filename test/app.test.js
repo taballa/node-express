@@ -35,7 +35,7 @@ describe('urlrar app', function(){
         request(app)
         .get('/noexists')
         .expect(404)
-        .expect('Page Not Found!', done)
+        .expect('Page Not Found!\n', done)
     })
 
 })
