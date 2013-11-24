@@ -14,6 +14,8 @@
     "swig": "~1.1.0"
   },
   "devDependencies": {
-    "mocha": "~1.14.0"
+    "mocha": "~1.14.0",
+    "should": "~2.1.0",
+    "supertest": "~0.8.1"
   }
 }
