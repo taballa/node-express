@@ -17,3 +17,8 @@ describe('Array', function(){
         })
     })
 })
+
+// for Example you may wish to populate database with dummy content before eash test
+describe('Connection', function(){
+    var db = new Connection
+})
