@@ -10,7 +10,7 @@ var http = require('http');
 var path = require('path');
 
 var MongoStore = require('connect-mongo')(express);
-var settings = require('settings')
+var settings = require('./settings')
 
 var app = express();
 
@@ -23,7 +23,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParse())
+app.use(express.cookieParser())
 app.use(express.session({
     secret: settings.cookieSecret,
     key: settings.db, // cookie nanme
