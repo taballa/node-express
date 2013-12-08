@@ -10,19 +10,21 @@ var http = require('http');
 var path = require('path');
 
 var MongoStore = require('connect-mongo')(express);
-var settings = require('settings')
+var settings = require('./settings')
 
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(express.favicon());
+// app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
+// app.use(express.favicon());
+app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParse())
+app.use(express.cookieParser())
 app.use(express.session({
     secret: settings.cookieSecret,
     key: settings.db, // cookie nanme
