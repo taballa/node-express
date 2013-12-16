@@ -15,9 +15,10 @@ module.exports = (grunt) ->
                 files: ['<%= path.app %>/sass/*.sass', '<%= path.app %>/sass/*.scss']
                 tasks: ['compass']
             views:
-                files: ['<%= path.views %>/*.[html, php, ejs, jade]']
+                files: ['<%= path.views %>/*.{html,php,ejs,jade}']
             express:
-                files: ['./app.js', './[routes, lib, models, test]/*.js']
+                # files: ['./app.js', './routes/*.js', './lib/*.js', './models/*.js', './test/*.js']
+                files: ['./{app,routes,lib,models,test}/*.js']
                 tasks: ['express:dev']
                 options:
                     nospawn: true
