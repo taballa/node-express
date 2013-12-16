@@ -18,6 +18,15 @@
   "devDependencies": {
     "mocha": "~1.14.0",
     "should": "~2.1.0",
-    "supertest": "~0.8.1"
-  }
+    "supertest": "~0.8.1",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-qunit": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-compass": "~0.7.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-express-server": "~0.4.9"
+  },
+  "main": "Gruntfile.coffee"
 }
