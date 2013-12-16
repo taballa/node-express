@@ -13,3 +13,7 @@ module.exports = function(app) {
         });
     })
 }
+
+module.exports.custom = function(req, res){
+  res.render('custom', {title: 'Custom Page', supplies: ['mop', 'broom', 'duster']});
+}
