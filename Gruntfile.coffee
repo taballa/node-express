@@ -21,7 +21,6 @@ module.exports = (grunt) ->
                 tasks: ['express:dev']
                 options:
                     nospawn: true
-
         compass:
             dist:
                 option:
@@ -34,7 +33,6 @@ module.exports = (grunt) ->
                 src: ['*.coffee']
                 dest: '<%= path.app %>/scripts/'
                 ext: '.js'
-
         express:
             options: {
             # Override defaults here
