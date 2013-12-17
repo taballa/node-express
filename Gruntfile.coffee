@@ -54,7 +54,6 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks('grunt-contrib-compass')
     grunt.loadNpmTasks('grunt-express-server')
 
-    grunt.registerTask('default', ['watch'])
-    grunt.registerTask('server', ['express:dev', 'watch'])
+    grunt.registerTask('default', ['express:dev', 'watch'])
 
 
