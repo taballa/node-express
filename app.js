@@ -11,6 +11,8 @@ var path = require('path');
 var MongoStore = require('connect-mongo')(express);
 var settings = require('./settings')
 
+var flash = require('connect-flash');
+
 var app = express();
 
 // all environments
@@ -34,6 +36,7 @@ app.use(express.session({
 }))
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash())
 
 // development only
 if ('development' == app.get('env')) {
@@ -41,9 +44,9 @@ if ('development' == app.get('env')) {
 }
 
 // app.get('/', routes.index);
-// app.get('/users', user.list);
+app.get('/users', user.list);
+// app.get('/custom', routes.custom)
 routes(app)
-app.get('/custom', routes.custom)
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
