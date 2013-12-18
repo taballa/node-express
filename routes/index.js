@@ -28,7 +28,10 @@ module.exports = function(app) {
 
     app.get('/signup', function(req, res) {
         res.render('signup', {
-            title: '注册'
+            title: '注册',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
         });
     });
 
