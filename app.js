@@ -15,6 +15,7 @@ var flash = require('connect-flash');
 
 var app = express();
 
+app.use(flash()); // NOTE:必须放在 app.use(express.session({ ... })) 之前！
 // all environments
 app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
@@ -36,7 +37,7 @@ app.use(express.session({
 }))
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(flash())
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -46,6 +47,10 @@ if ('development' == app.get('env')) {
 // app.get('/', routes.index);
 app.get('/users', user.list);
 // app.get('/custom', routes.custom)
+app.get('/flash', function(req, res){
+    req.flash('info', "Flash is back!")
+    res.redirect('/')
+})
 routes(app)
 
 http.createServer(app).listen(app.get('port'), function(){
