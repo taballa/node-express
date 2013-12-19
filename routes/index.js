@@ -15,7 +15,8 @@ module.exports = function(app) {
             title: 'Express',
             user: req.session.user,
             success: req.flash('success').toString(),
-            error: req.flash('error').toString()
+            error: req.flash('error').toString(),
+            info: req.flash('info').toString()
         });
     })
 
@@ -26,29 +27,43 @@ module.exports = function(app) {
         });
     })
 
+    app.get('/signup', checkNotLogin);
     app.get('/signup', function(req, res) {
         res.render('signup', {
             title: '注册',
             user: req.session.user,
             success: req.flash('success').toString(),
-            error: req.flash('error').toString()
+            error: req.flash('error').toString(),
+            info: req.flash('info').toString()
         });
     });
 
+    app.get('/login', checkNotLogin);
     app.get('/login', function(req, res) {
         res.render('login', {
-            title: '登录'
+            title: '登录',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString(),
+            info: req.flash('info').toString()
         });
     });
 
     app.get('/post', function(req, res) {
         res.render('post', {
-            title: '发表'
+            title: '发表',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString(),
+            info: req.flash('info').toString()
         });
     });
 
+    app.get('/logout', checkLogin)
     app.get('/logout', function(req, res) {
-
+        req.session.user = null;
+        req.flash('success', '登出成功！')
+        res.redirect('/')
     });
 
     app.post('/signup', function(req, res) {
@@ -86,12 +101,47 @@ module.exports = function(app) {
         })
     });
 
-    app.post('/login', function(req, res) {});
+    app.post('/login', function(req, res) {
+        var MD5 = crypto.createHash('md5'),
+            password = MD5.update(req.body.password).digest('hex');
+        User.get(req.body.name, function(err, user){
+            if (!user){
+                req.flash('error', 'user not exist.')
+                return res.redirect('/login')
+            };
+            if (password != user.password){
+                req.flash('error', 'wrong password.')
+                return res.redirect('/login')
+            };
+            req.session.user = user;
+            req.flash('success', 'Login Success.')
+            res.redirect('/')
+        })
+    });
 
-    app.post('/post', function(req, res) {});
+    app.post('/post', function(req, res) {
+
+    });
 
 }
 
 // module.exports.custom = function(req, res){
 //     res.render('custom', {title: 'Custom Page', supplies: ['mop', 'broom', 'duster']});
 // }
+
+function checkLogin(req, res, next){
+    if (!req.session.user){
+        req.flash('error', 'not login')
+        res.redirect('/')
+    }
+    next();
+}
+
+function checkNotLogin(req, res, next) {
+   if (req.session.user){
+        req.flash('error', 'logged.')
+        res.redirect('back')
+    }
+    next();
+
+}
