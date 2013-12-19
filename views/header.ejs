@@ -9,8 +9,8 @@
     <header><h1><%= title %></h1></header>
     <nav>
         <span><a href="/" title="home page">home</a></span>
-        <span><a href="/users" title="users">users</a></span>
         <% if (user){ %>
+            <span><a href="/users" title="users">users</a></span>
             <span><a href="/post">Post</a></span>
             <span><a href="/logout">Logout</a></span>
         <% } else { %>
@@ -24,4 +24,7 @@
         <% } %>
         <% if (error){ %>
             <div><%= error %></div>
+        <% } %>
+        <% if (info){ %>
+            <div><%= info %></div>
         <% } %>
