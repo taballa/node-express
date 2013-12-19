@@ -1,5 +1,11 @@
 <%- include header %>
 <%- include a %>
+<% if (success){ %>
+    <div><%= success %></div>
+<% } %>
+<% if (error){ %>
+    <div><%= error %></div>
+<% } %>
 这是主页
 <%- include b %>
 <%- include footer %>
