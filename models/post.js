@@ -18,15 +18,15 @@ Post.prototype.save = function(callback){
         year : date.getFullYear(),
         month : date.getFullYear() + '-' + (date.getMonth() + 1),
         day : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
-        minute : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getHours() + ':' + (date.getMinutes() < 10 : '0' + date.getMinutes() : date.getMinutes())
+        minute : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
     }
 
     // article
     var post = {
-        name = this.name;
-        time = time;
-        title = this.title;
-        post = this.post;
+        name : this.name,
+        time : time,
+        title : this.title,
+        post : this.post
     }
 
     // open database
@@ -34,7 +34,7 @@ Post.prototype.save = function(callback){
         if (err){
             return callback(err)
         }
-        db.collection('posts', function(err, callback){
+        db.collection('posts', function(err, collection){
             if (err){
                 mongodb.close();
                 return callback(err);
@@ -61,7 +61,7 @@ Post.get = function(name, callback){
             return callback(err)
         }
         // reading posts collection
-        db.collection('posts', function(err, callback){
+        db.collection('posts', function(err, collection){
             if (err){
                 mongodb.close();
                 return callback(err);
@@ -71,7 +71,16 @@ Post.get = function(name, callback){
                 query.name = name;
             }
             // search article of query.name
-            collection.find(query).sort()
+            collection.find(query).sort({
+                time: -1
+            }).toArray(function (err, docs){
+                mongodb.close();
+                if (err){
+                    return callback(err);
+                }
+                callback(null, docs);
+            })
         })
     })
 }
+
