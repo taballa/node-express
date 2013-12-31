@@ -51,7 +51,7 @@ module.exports = (grunt) ->
         copy:
             main:
                 files:[
-                    {expand: true, src: ['lib/*', 'models/*', 'public/*', 'routes/*', 'views/*', 'app.js', 'package.json', 'app.conf'], dest: 'duapp/1/'}
+                    {expand: true, src: ['models/*', 'public/*', 'routes/*', 'views/*', 'app.js', 'package.json', 'app.conf'], dest: 'duapp/1/'}
                 ]
         clean:
             ["duapp/1/"]
