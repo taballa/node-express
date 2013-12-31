@@ -48,12 +48,23 @@ module.exports = (grunt) ->
             # test:
             #     options:
             #        script: "app/app.js"
+        copy:
+            main:
+                files:[
+                    {expand: true, src: ['lib/*', 'models/*', 'public/*', 'routes/*', 'views/*', 'app.js', 'package.json', 'app.conf'], dest: 'duapp/1/'}
+                ]
+        clean:
+            ["duapp/1/"]
+
 
     grunt.loadNpmTasks('grunt-contrib-watch')
     grunt.loadNpmTasks('grunt-contrib-coffee')
     grunt.loadNpmTasks('grunt-contrib-compass')
     grunt.loadNpmTasks('grunt-express-server')
+    grunt.loadNpmTasks('grunt-contrib-copy')
+    grunt.loadNpmTasks('grunt-contrib-clean')
 
     grunt.registerTask('default', ['express:dev', 'watch'])
+    grunt.registerTask('release', ['clean', 'copy'])
 
 
