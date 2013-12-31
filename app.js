@@ -17,7 +17,7 @@ var app = express();
 
 app.use(flash()); // NOTE:必须放在 app.use(express.session({ ... })) 之前！
 // all environments
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.APP_PORT || 3001);
 app.set('views', __dirname + '/views');
 // app.set('view engine', 'jade');
 app.set('view engine', 'ejs');
